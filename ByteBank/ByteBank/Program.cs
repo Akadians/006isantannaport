@@ -60,10 +60,8 @@ namespace ByteBank
 
             UsarSistema();
 
-
             Console.ReadLine();         
         }
-
         public static void UsarSistema()
         {
             SistemaInterno sistemaInterno = new();
@@ -85,7 +83,6 @@ namespace ByteBank
             Console.WriteLine();
 
             sistemaInterno.Logar(alagoasSA, "1122");
-
 
         }
     }
