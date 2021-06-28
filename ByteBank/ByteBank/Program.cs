@@ -56,9 +56,21 @@ namespace ByteBank
 
             Console.WriteLine("Total de Funcionários " + Funcionario.totaldeFuncionarios);
 
-            Console.WriteLine();
+            Console.WriteLine();            
 
             UsarSistema();
+
+            Console.WriteLine();
+
+            Console.WriteLine("Part 4# Start");
+
+            Console.WriteLine();
+
+            // Continuação
+
+            ContaCorrente _001 = new (001, 0001);
+
+            Console.WriteLine(ContaCorrente.taxaOperacao);
 
             Console.ReadLine();         
         }
