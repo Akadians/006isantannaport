@@ -72,7 +72,19 @@ namespace ByteBank
 
             Console.WriteLine(ContaCorrente.taxaOperacao);
 
-            Console.ReadLine();         
+            Console.WriteLine();
+
+            try
+            {
+                ContaCorrente testErro = new(0, 0);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+            Console.ReadLine();
         }
         public static void UsarSistema()
         {
