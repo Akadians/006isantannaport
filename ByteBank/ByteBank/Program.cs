@@ -72,7 +72,39 @@ namespace ByteBank
 
             Console.WriteLine(ContaCorrente.taxaOperacao);
 
-            Console.ReadLine();         
+            Console.WriteLine();
+
+            try
+            {
+                ContaCorrente testErro = new(10, 10);
+                testErro.Depositar(100);
+                Console.WriteLine(testErro.Saldo);
+                //testErro.sacar(300);
+                //testErro.sacar(500);
+                Console.WriteLine(testErro.Saldo);
+                Console.WriteLine();
+                testErro.Transferir(1000, _001);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);         
+            }        
+            catch (SaldoInsuficienteException ex)
+            {
+                Console.WriteLine("Seu saldo atual é " + ex.Saldo);
+                Console.WriteLine("Você tentou utilizar " + ex.Valorsaque);
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);
+            }
+            catch (OperacaoFinanceiraException ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);
+            }
+
+
+            Console.ReadLine();
         }
         public static void UsarSistema()
         {

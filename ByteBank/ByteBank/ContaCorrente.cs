@@ -1,4 +1,6 @@
-﻿namespace ByteBank
+﻿using System;
+
+namespace ByteBank
 {
     class ContaCorrente
     {
@@ -7,11 +9,11 @@
 
         public Cliente titular { get; set; }
 
-        public int Numero { get; set; }
-
-        private int _agencia;
-        public int Agencia;
-
+        public int contadorSaquesNegados { get; private set; }
+        public int contadortransferenciasNegados { get; private set; }
+        public int Numero { get; }
+        public int Agencia { get; }
+       
         private double _saldo = 100;
         public double Saldo
         {
@@ -21,7 +23,6 @@
             }
             set
             {
-
                 if (value < 0)
                 {
                     return;
@@ -31,22 +32,35 @@
         }
         public ContaCorrente(int agencia, int numero)
         {
-            Agencia = agencia;
-            Numero = numero;
-            taxaOperacao = 30 / totalDeContasCriadas;
-
-            totalDeContasCriadas++;
-        }
-
-        public bool sacar(double valor)
-        {
-            if (this.Saldo < valor)
+            if (agencia <= 0)
             {
-                return false;
+                throw new ArgumentException("Agencia deve ser maior que 0.", nameof(agencia));
+            }
+            if (numero <= 0)
+            {
+                throw new ArgumentException("Numero deve ser maior que 0.", nameof(numero));
             }
 
-            this.Saldo -= valor;
-            return true;
+            Agencia = agencia;
+            Numero = numero;
+            
+            totalDeContasCriadas++;
+            taxaOperacao = 30 / totalDeContasCriadas;
+        }
+
+        public void sacar(double valor)
+        {
+            if (valor < 0)
+            {
+                throw new ArgumentException(" Valor Inválido para o saque: " + nameof(valor));
+            }
+            if (this.Saldo < valor)
+            {
+                contadorSaquesNegados++;
+                throw new SaldoInsuficienteException(Saldo, valor);
+            }
+
+            this.Saldo -= valor;            
         }
 
         public void Depositar(double valor)
@@ -54,16 +68,24 @@
             this.Saldo += valor;
         }
 
-        public bool Transferir(double valor, ContaCorrente contaDestino)
+        public void Transferir(double valor, ContaCorrente contaDestino)
         {
-            if (this.Saldo < valor)
+            if (valor < 0)
             {
-                return false;
+                throw new ArgumentException(" Valor Inválido para a transferencia: " + nameof(valor));
             }
 
-            this.Saldo -= valor;
-            contaDestino.Depositar(valor);
-            return true;
+            try
+            {
+                sacar(valor);
+            }
+            catch(SaldoInsuficienteException ex)
+            {                
+                contadortransferenciasNegados++;
+                throw new OperacaoFinanceiraException("Operação não autorizada", ex);
+            }
+            
+            contaDestino.Depositar(valor);            
         }
     }
 }
