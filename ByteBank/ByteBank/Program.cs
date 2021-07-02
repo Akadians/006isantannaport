@@ -76,6 +76,7 @@ namespace ByteBank
 
             try
             {
+<<<<<<< HEAD
                 ContaCorrente testErro = new(10, 10);
                 testErro.Depositar(100);
                 Console.WriteLine(testErro.Saldo);
@@ -100,6 +101,12 @@ namespace ByteBank
             catch (OperacaoFinanceiraException ex)
             {
                 Console.WriteLine(ex.StackTrace);
+=======
+                ContaCorrente testErro = new(0, 0);
+            }
+            catch (ArgumentException ex)
+            {
+>>>>>>> a1c5e337e7cce221f82f7a881a9630fa13ccb584
                 Console.WriteLine(ex.Message);
             }
 

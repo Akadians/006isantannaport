@@ -9,8 +9,12 @@ namespace ByteBank
 
         public Cliente titular { get; set; }
 
+<<<<<<< HEAD
         public int contadorSaquesNegados { get; private set; }
         public int contadortransferenciasNegados { get; private set; }
+=======
+
+>>>>>>> a1c5e337e7cce221f82f7a881a9630fa13ccb584
         public int Numero { get; }
         public int Agencia { get; }
        
@@ -43,7 +47,12 @@ namespace ByteBank
 
             Agencia = agencia;
             Numero = numero;
+<<<<<<< HEAD
             
+=======
+            //taxaOperacao = 30 / totalDeContasCriadas;
+
+>>>>>>> a1c5e337e7cce221f82f7a881a9630fa13ccb584
             totalDeContasCriadas++;
             taxaOperacao = 30 / totalDeContasCriadas;
         }
