@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ByteBank.Model
 {
     
-    class GetBonificacao
+    public class GetBonificacao
     {
         private double totalBonificacao;
 

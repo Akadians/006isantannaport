@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Model
 {
-    class Cliente
+   public class Cliente
     {
         public String nome;
         public String cpf;

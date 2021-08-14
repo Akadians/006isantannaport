@@ -2,7 +2,10 @@
 
 namespace ByteBank.Model
 {
-    class ContaCorrente
+    /// <summary>
+    /// Classe que define o comportamento padrão de uma conta corrente no banco ByteBank.
+    /// </summary>
+    public class ContaCorrente
     {
         public static double taxaOperacao { get; private set; }
         public static int totalDeContasCriadas { get; private set; }
@@ -32,6 +35,11 @@ namespace ByteBank.Model
                 _saldo = value;
             }
         }
+        /// <summary>
+        /// Cria uma instancia de conta corrente com os argumentos utilizados.
+        /// </summary>
+        /// <param name="agencia"> Representa o valor da propriedade <see cref="Agencia"/> e deve ser > 0.</param>
+        /// <param name="numero"> Representa o valor da propriedade <see cref="Numero"/> e deve ser > 0.</param>
         public ContaCorrente(int agencia, int numero)
         {
             if (agencia <= 0)
@@ -48,7 +56,12 @@ namespace ByteBank.Model
             totalDeContasCriadas++;
             taxaOperacao = 30 / totalDeContasCriadas;
         }
-
+        /// <summary>
+        /// Realiza o saque e atualiza o valor da propriedade <see cref="Saldo"/>.
+        /// </summary>
+        /// <exception cref="ArgumentException"> Exceção lançada quando um valor negativo é utilizado no argumento <paramref name="valor"/></exception>
+        /// <exception cref="SaldoInsuficienteException"> Exceção lançada quando o valor de <paramref name="valor"/> é maior que o valor da propriedade <see cref="Saldo"/>.</exception>
+        /// <param name="valor">Representa o valor do saque, deve ser > 0 e menor que <see cref="Saldo"/></param>
         public void sacar(double valor)
         {
             if (valor < 0)

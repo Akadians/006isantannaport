@@ -4,7 +4,6 @@ namespace ByteBank.Model.Sistemas
 {
     interface IAutenticavel
     {
-        public bool Autenticar(string Senha);
-      
+        public bool Autenticar(string Senha);      
     }
 }

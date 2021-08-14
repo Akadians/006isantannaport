@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Model.Funcionarios
 {
-    class Designer : Funcionario
+    public class Designer : Funcionario
     {    
         public Designer(string cpf) : base (3000, cpf)
         {
@@ -17,7 +17,7 @@ namespace ByteBank.Model.Funcionarios
         {
             salario *= 1.11;
         }
-        public override Double GetBonificacao()
+        internal protected override Double GetBonificacao()
         {            
             return salario * 0.17;
         }

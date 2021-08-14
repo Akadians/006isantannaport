@@ -3,7 +3,7 @@ using System;
 
 namespace ByteBank.Model.Funcionarios
 {
-    class Diretor : FuncionarioAutenticavel
+    public class Diretor : FuncionarioAutenticavel
     {
         public Diretor(string cpf) : base(5000, cpf)
         {
@@ -14,7 +14,7 @@ namespace ByteBank.Model.Funcionarios
         {
             salario *= 1.15;
         }
-        public override Double GetBonificacao()
+        internal protected override Double GetBonificacao()
         {
             return salario *= 0.5;
         }

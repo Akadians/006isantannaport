@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Model
 {
-    class ParceiroComercial : IAutenticavel
+    public class ParceiroComercial : IAutenticavel
     {
+        private AutenticacaoHelper _autenticacaoHelper = new();
 
-        public String senha;
-        public bool Autenticar(string Senha)
+        public string Pass { get; set; }
+        public bool Autenticar(string senha)
         {
-            return senha == Senha;
+            return _autenticacaoHelper.CompararSenhas(senha, Pass);
         }
     }
 }

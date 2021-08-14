@@ -1,0 +1,13 @@
+C:\Users\Igor\Documents\00 - C# Study Project\ByteBank\ByteBank\ByteBank\ByteBank.Model\bin\Debug\net5.0\ByteBank.Model.deps.json
+C:\Users\Igor\Documents\00 - C# Study Project\ByteBank\ByteBank\ByteBank\ByteBank.Model\bin\Debug\net5.0\ByteBank.Model.dll
+C:\Users\Igor\Documents\00 - C# Study Project\ByteBank\ByteBank\ByteBank\ByteBank.Model\bin\Debug\net5.0\ref\ByteBank.Model.dll
+C:\Users\Igor\Documents\00 - C# Study Project\ByteBank\ByteBank\ByteBank\ByteBank.Model\bin\Debug\net5.0\ByteBank.Model.pdb
+C:\Users\Igor\Documents\00 - C# Study Project\ByteBank\ByteBank\ByteBank\ByteBank.Model\obj\Debug\net5.0\ByteBank.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Igor\Documents\00 - C# Study Project\ByteBank\ByteBank\ByteBank\ByteBank.Model\obj\Debug\net5.0\ByteBank.Model.AssemblyInfoInputs.cache
+C:\Users\Igor\Documents\00 - C# Study Project\ByteBank\ByteBank\ByteBank\ByteBank.Model\obj\Debug\net5.0\ByteBank.Model.AssemblyInfo.cs
+C:\Users\Igor\Documents\00 - C# Study Project\ByteBank\ByteBank\ByteBank\ByteBank.Model\obj\Debug\net5.0\ByteBank.Model.csproj.CoreCompileInputs.cache
+C:\Users\Igor\Documents\00 - C# Study Project\ByteBank\ByteBank\ByteBank\ByteBank.Model\obj\Debug\net5.0\ByteBank.Model.dll
+C:\Users\Igor\Documents\00 - C# Study Project\ByteBank\ByteBank\ByteBank\ByteBank.Model\obj\Debug\net5.0\ref\ByteBank.Model.dll
+C:\Users\Igor\Documents\00 - C# Study Project\ByteBank\ByteBank\ByteBank\ByteBank.Model\obj\Debug\net5.0\ByteBank.Model.pdb
+C:\Users\Igor\Documents\00 - C# Study Project\ByteBank\ByteBank\ByteBank\ByteBank.Model\bin\Debug\net5.0\ByteBank.Model.xml
+C:\Users\Igor\Documents\00 - C# Study Project\ByteBank\ByteBank\ByteBank\ByteBank.Model\obj\Debug\net5.0\ByteBank.Model.csproj.AssemblyReference.cache

@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Model.Funcionarios
 {
-    abstract class FuncionarioAutenticavel : Funcionario, IAutenticavel
+    public abstract class FuncionarioAutenticavel : Funcionario, IAutenticavel
     {
-        public String senha;
+        private AutenticacaoHelper _autenticacaoHelper = new AutenticacaoHelper();
+        public String Pass;
         public FuncionarioAutenticavel (double salario, string cpf) : base(salario, cpf)
         {
 
         }
-        public bool Autenticar(string Senha)
+        public bool Autenticar(string senha)
         {
-            return senha == Senha;
+            return _autenticacaoHelper.CompararSenhas(senha, Pass);
         }
     }
 }

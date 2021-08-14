@@ -3,7 +3,7 @@ using System;
 
 namespace ByteBank.Model.Funcionarios
 {
-    abstract class Funcionario
+    public abstract class Funcionario
     {
         
         public static int totaldeFuncionarios { get; private set; }        
@@ -20,6 +20,6 @@ namespace ByteBank.Model.Funcionarios
         }     
 
         public abstract void AumentarSalario();
-        public abstract Double GetBonificacao();
+        internal protected abstract Double GetBonificacao();
     }
 }

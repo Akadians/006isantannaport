@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Model.Funcionarios
 {
-    class GerenteDeConta : FuncionarioAutenticavel 
+    public class GerenteDeConta : FuncionarioAutenticavel 
     {    
         public GerenteDeConta(string cpf) : base (4000, cpf)
         {
@@ -18,7 +18,7 @@ namespace ByteBank.Model.Funcionarios
         {
             salario *= 1.05;
         }
-        public override Double GetBonificacao()
+        internal protected override Double GetBonificacao()
         {            
             return salario * 0.25;
         }
