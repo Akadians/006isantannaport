@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Model
 {
+    /// <summary>
+    /// Sistema auxiliar responsável pela verificação dos dados de acesso ao sistema interno.
+    /// </summary>
     internal class AutenticacaoHelper
     {
         public bool CompararSenhas(string passTrue, string passTry)

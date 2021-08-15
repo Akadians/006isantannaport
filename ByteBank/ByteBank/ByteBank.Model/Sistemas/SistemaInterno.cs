@@ -9,7 +9,12 @@ namespace ByteBank.Model.Sistemas
 {
     class SistemaInterno
     {
-
+        /// <summary>
+        /// Sistema de acesso restrito a somente alguns funcionários e parceiros comerciais.
+        /// </summary>
+        /// <param name="funcionario"> Nome do funcionário que detém a permissão para acessar o sistema.</param>
+        /// <param name="senha"> Senha atribuida ao funcionário no momento de seu cadastro.</param>
+        /// <returns></returns>
         public bool Logar(IAutenticavel funcionario, string senha)
         {
             bool usuarioautenticado = funcionario.Autenticar(senha);
