@@ -4,9 +4,74 @@
         <name>ByteBank.Model</name>
     </assembly>
     <members>
+        <member name="T:ByteBank.Model.AutenticacaoHelper">
+            <summary>
+            Sistema auxiliar responsável pela verificação dos dados de acesso ao sistema interno.
+            </summary>
+        </member>
+        <member name="T:ByteBank.Model.Cliente">
+            <summary>
+            Classe utilizada para adicionar o cliente do Bytebank
+            </summary>
+        </member>
+        <member name="F:ByteBank.Model.Cliente.nome">
+            <summary>
+            Deve-se adicionar Nome completo do cliente.
+            </summary>
+        </member>
+        <member name="F:ByteBank.Model.Cliente.cpf">
+            <summary>
+            Cadastro de Pessoa Fisica - Deve Conter 11 Digitos
+            </summary>
+        </member>
+        <member name="F:ByteBank.Model.Cliente.profissao">
+            <summary>
+            Profissão exercida pelo cliente.
+            </summary>
+        </member>
         <member name="T:ByteBank.Model.ContaCorrente">
             <summary>
             Classe que define o comportamento padrão de uma conta corrente no banco ByteBank.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.ContaCorrente.taxaOperacao">
+            <summary>
+            Taxa padrão cobrada em cima de cada operação realizada na conta corrente.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.ContaCorrente.totalDeContasCriadas">
+            <summary>
+            Contador de contas criadas no Bytebank.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.ContaCorrente.titular">
+            <summary>
+            Atribuição de titular da conta.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.ContaCorrente.contadorSaquesNegados">
+            <summary>
+            Marcador estatistico de operação de saque negados.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.ContaCorrente.contadortransferenciasNegados">
+            <summary>
+            Marcador estatistico de operação de transferencias negados.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.ContaCorrente.Numero">
+            <summary>
+            Numero atribuido da conta.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.ContaCorrente.Agencia">
+            <summary>
+            Agencia de origem da conta.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.ContaCorrente.Saldo">
+            <summary>
+            Valor que representa o montante disponivél na conta.
             </summary>
         </member>
         <member name="M:ByteBank.Model.ContaCorrente.#ctor(System.Int32,System.Int32)">
@@ -23,6 +88,286 @@
             <exception cref="T:System.ArgumentException"> Exceção lançada quando um valor negativo é utilizado no argumento <paramref name="valor"/></exception>
             <exception cref="T:ByteBank.Model.SaldoInsuficienteException"> Exceção lançada quando o valor de <paramref name="valor"/> é maior que o valor da propriedade <see cref="P:ByteBank.Model.ContaCorrente.Saldo"/>.</exception>
             <param name="valor">Representa o valor do saque, deve ser > 0 e menor que <see cref="P:ByteBank.Model.ContaCorrente.Saldo"/></param>
+        </member>
+        <member name="M:ByteBank.Model.ContaCorrente.Depositar(System.Double)">
+            <summary>
+            Realiza o deposito e atualiza o valor da propriedade <see cref="P:ByteBank.Model.ContaCorrente.Saldo"/>
+            </summary>
+            <param name="valor">Representa o valor do depósito, deve ser > 0 e menor que <see cref="P:ByteBank.Model.ContaCorrente.Saldo"/></param>
+        </member>
+        <member name="M:ByteBank.Model.ContaCorrente.Transferir(System.Double,ByteBank.Model.ContaCorrente)">
+            <summary>
+            Realiza uma transferencia de valores entre contas e atualiza o valor da propriedade <see cref="P:ByteBank.Model.ContaCorrente.Saldo"/> de ambas as contas.
+            </summary>
+            <exception cref="T:System.ArgumentException">Exceção lançada quando um valor negativo é utilizado no argumento <paramref name="valor"/></exception>
+            <exception cref="T:ByteBank.Model.SaldoInsuficienteException">Exceção lançada quando o valor de <paramref name="valor"/> é maior que o valor da propriedade <see cref="P:ByteBank.Model.ContaCorrente.Saldo"/>.</exception>
+            <param name="valor">Representa o valor da transferencia, deve ser > 0 e menor que <see cref="P:ByteBank.Model.ContaCorrente.Saldo"/></param>
+            <param name="contaDestino">Conta corrente destino para a transferencia de valores</param>
+        </member>
+        <member name="T:ByteBank.Model.Funcionarios.Auxiliar">
+            <summary>
+            Funcionário com cargo administrativo, Auxiliar Administrativo.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.Auxiliar.#ctor(System.String)">
+            <summary>
+            Auxiliar Administrativo, Salário base R$ 2000,00.
+            </summary>
+            <param name="cpf">Cadastro de Pessoa Fisica - Deve Conter 11 Digitos</param>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.Auxiliar.AumentarSalario">
+            <summary>
+            Aumento salarial anual padrão ByteBank, Fator de aumento 10%.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.Auxiliar.GetBonificacao">
+            <summary>
+            Bonificação anual do funcionário, base salário + 20%.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ByteBank.Model.Funcionarios.Designer">
+            <summary>
+            Funcionário com cargo de designer, Designer Gráfico.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.Designer.#ctor(System.String)">
+            <summary>
+            Designer Gráfico, salário base R$ 3000,00.
+            </summary>
+            <param name="cpf">Cadastro de Pessoa Fisica - Deve Conter 11 Digitos</param>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.Designer.AumentarSalario">
+            <summary>
+            Aumento salarial anual padrão ByteBank, Fator de aumento 11%.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.Designer.GetBonificacao">
+            <summary>
+            Bonificação anual do funcionário, base salário + 17%.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ByteBank.Model.Funcionarios.Diretor">
+            <summary>
+            Funcionário de alto escalão, Diretor.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.Diretor.#ctor(System.String)">
+            <summary>
+            Diretor, salário base R$ 5000,00.
+            </summary>
+            <param name="cpf">Cadastro de Pessoa Fisica - Deve Conter 11 Digitos</param>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.Diretor.AumentarSalario">
+            <summary>
+            Aumento salarial anual padrão ByteBank, Fator de aumento 15%.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.Diretor.GetBonificacao">
+            <summary>
+            Bonificação anual do funcionário, base salário + 50%.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ByteBank.Model.Funcionarios.Funcionario">
+            <summary>
+            Grupo de funcionário, necessário especificação de cargo para criação.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.Funcionarios.Funcionario.totaldeFuncionarios">
+            <summary>
+            Contador de colaboradores do ByteBank.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.Funcionarios.Funcionario.nome">
+            <summary>
+            Deve conter nome completo do funcionário.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.Funcionarios.Funcionario.cpf">
+            <summary>
+            Cadastro de Pessoa Fisica - Deve Conter 11 Digitos
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.Funcionarios.Funcionario.salario">
+            <summary>
+            Salário é definido pelo seu cargo no Bytebank.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.Funcionario.#ctor(System.Double,System.String)">
+            <summary>
+            Criação de cargo novo no Bytebank.
+            </summary>
+            <param name="Salario">Salário é definido pelo seu cargo no Bytebank.</param>
+            <param name="CPF">Cadastro de Pessoa Fisica - Deve Conter 11 Digitos</param>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.Funcionario.AumentarSalario">
+            <summary>
+            Aumento de salário anual automático, política de incentivo Bytebank.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.Funcionario.GetBonificacao">
+            <summary>
+            Bonificação Anual data junto do 13° salário, política de incentivo Bytebank.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ByteBank.Model.Funcionarios.FuncionarioAutenticavel">
+            <summary>
+            Cargo aditivo com permissão de acessar o Sistema Interno.
+            </summary>
+        </member>
+        <member name="F:ByteBank.Model.Funcionarios.FuncionarioAutenticavel.Pass">
+            <summary>
+            Senha de acesso do funcionário.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.FuncionarioAutenticavel.#ctor(System.Double,System.String)">
+            <summary>
+            Cargo aditivo de confiança, funcionário com permissão de acessar o sistema interno.
+            </summary>
+            <param name="salario">Remuneração mensal do funcionário.</param>
+            <param name="cpf">Cadastro de Pessoa Fisica - Deve Conter 11 Dígitos</param>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.FuncionarioAutenticavel.Autenticar(System.String)">
+            <summary>
+            Metodo de autenticação de acesso ao sistema interno.
+            </summary>
+            <param name="senha">Senha pré-definida pelo funcionário.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ByteBank.Model.Funcionarios.GerenteDeConta">
+            <summary>
+            Funcionário de médio escalão, Gerente de Conta.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.GerenteDeConta.#ctor(System.String)">
+            <summary>
+            Gerente de Conta, salário base R$ 4000,00.
+            </summary>
+            <param name="cpf">Cadastro de Pessoa Fisica - Deve Conter 11 Digitos</param>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.GerenteDeConta.AumentarSalario">
+            <summary>
+            Aumento salarial anual padrão ByteBank, Fator de aumento 05%.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.Funcionarios.GerenteDeConta.GetBonificacao">
+            <summary>
+            Bonificação anual do funcionário, base salário + 25%.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ByteBank.Model.GetBonificacao">
+            <summary>
+            Metodo que adiciona bonificação anual para os funcionários Bytebank, política de incentivo Bytebank.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.GetBonificacao.Registrar(ByteBank.Model.Funcionarios.Funcionario)">
+            <summary>
+            Registro contábil das bonificações geradas.
+            </summary>
+            <param name="funcionario"></param>
+        </member>
+        <member name="M:ByteBank.Model.GetBonificacao.GetTotalBonificacao">
+            <summary>
+            Sistema de acesso a informação total de bonificações.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ByteBank.Model.OperacaoFinanceiraException">
+            <summary>
+            Exception gerada para problemas ocorridos nas operações financeiras.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.OperacaoFinanceiraException.#ctor">
+            <summary>
+            Implementação padrão.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.OperacaoFinanceiraException.#ctor(System.String)">
+            <summary>
+            Implementação descricional.
+            </summary>
+            <param name="mensagem">Deve conter mensagem que descreva a ocorrencia do erro e seu motivo.</param>
+        </member>
+        <member name="M:ByteBank.Model.OperacaoFinanceiraException.#ctor(System.String,System.Exception)">
+            <summary>
+            Implementação descricional com tratamento interno.
+            </summary>
+            <param name="mensagem">Deve conter mensagem que descreva a ocorrencia do erro e seu motivo.</param>
+            <param name="innerException">Deve indicar o nome da InnerException que tratará a exception.</param>
+        </member>
+        <member name="T:ByteBank.Model.ParceiroComercial">
+            <summary>
+            Metodo de cadastro de parceiros comerciais com permissão de acessar o sistema interno.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.ParceiroComercial.Pass">
+            <summary>
+            Senha que deve ser cadastrada para o uso no acesso posteriormente.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.ParceiroComercial.Autenticar(System.String)">
+            <summary>
+            Metodo utilizado para acessar o sistema interno.
+            </summary>
+            <param name="senha"> Senha préviamente registrada no cadastro do parceiro que deve ser usada para acessar o sistema interno.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ByteBank.Model.SaldoInsuficienteException">
+            <summary>
+            Exception resultante de falta de saldo para realizar a operação solicitada.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.SaldoInsuficienteException.Saldo">
+            <summary>
+            Montante financeiro guardado na conta acessada.
+            </summary>
+        </member>
+        <member name="P:ByteBank.Model.SaldoInsuficienteException.Valorsaque">
+            <summary>
+            Valor requisitado para ser deduzido do <see cref="P:ByteBank.Model.SaldoInsuficienteException.Saldo"/>.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.SaldoInsuficienteException.#ctor">
+            <summary>
+            Implementação Padrão.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.SaldoInsuficienteException.#ctor(System.Double,System.Double)">
+            <summary>
+            Implementação descricional completa para saque.
+            </summary>
+            <param name="saldo"> Informa o valor do <see cref="P:ByteBank.Model.SaldoInsuficienteException.Saldo"/> atual da conta.</param>
+            <param name="valorDoSaque">Informa o valor de <see cref="P:ByteBank.Model.SaldoInsuficienteException.Valorsaque"/> requisitado na transação.</param>
+        </member>
+        <member name="M:ByteBank.Model.SaldoInsuficienteException.#ctor(System.String)">
+            <summary>
+            Implementação descricional.
+            </summary>
+            <param name="mensagem"> Deve conter mensagem de referencia para a ocorrencia da exception.</param>
+        </member>
+        <member name="M:ByteBank.Model.SaldoInsuficienteException.#ctor(System.String,System.Exception)">
+            <summary>
+            Implementação descricional com tratamento interno.
+            </summary>
+            <param name="mensagem">Deve conter mensagem que descreva a ocorrencia do erro e seu motivo.</param>
+            <param name="innerException">Deve indicar o nome da InnerException que tratará a exception.</param>
+        </member>
+        <member name="T:ByteBank.Model.Sistemas.IAutenticavel">
+            <summary>
+            Interface que atribui uma subclasse ao funcionário com direito a autenticar-se e entrar no sistema interno.
+            </summary>
+        </member>
+        <member name="M:ByteBank.Model.Sistemas.SistemaInterno.Logar(ByteBank.Model.Sistemas.IAutenticavel,System.String)">
+            <summary>
+            Sistema de acesso restrito a somente alguns funcionários e parceiros comerciais.
+            </summary>
+            <param name="funcionario"> Nome do funcionário que detém a permissão para acessar o sistema.</param>
+            <param name="senha"> Senha atribuida ao funcionário no momento de seu cadastro.</param>
+            <returns></returns>
         </member>
     </members>
 </doc>

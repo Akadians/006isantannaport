@@ -9,23 +9,13 @@ namespace ByteBank.SistemaAgencia
         static void Main(string[] args)
 
         {
-            DateTime dataFimPagamento = new DateTime(2021, 9, 01);
-            DateTime dataCorrente = DateTime.Now;
+            string url = "pagina?argumentos";
+            int indiceInterrogacao = url.IndexOf('?');
 
-            TimeSpan diferenca = dataFimPagamento - dataCorrente;
+            url.Substring(indiceInterrogacao + 1);
 
-            string mensagem = "Vencimento em " + TimeSpanHumanizeExtensions.Humanize(diferenca);
-            ContaCorrente Carlos = new(123, 12);
-            Console.WriteLine(mensagem);
 
             Console.ReadLine();
-        }
-
-        static string GetTime (TimeSpan time)
-        {
-            
-            
-            return time.Days + " dias";
         }
     }
 }
