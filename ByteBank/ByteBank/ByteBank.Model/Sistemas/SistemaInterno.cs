@@ -21,7 +21,7 @@ namespace ByteBank.Model.Sistemas
 
             if(usuarioautenticado)
             {
-                Console.WriteLine("Bem vindo " + funcionario);
+                Console.WriteLine($"Bem vindo {funcionario}.");
                 return true;
             }
             else

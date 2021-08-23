@@ -133,5 +133,13 @@ namespace ByteBank.Model
             
             contaDestino.Depositar(valor);            
         }
+        /// <summary>
+        /// Metodo de acesso a informações da classe.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $" Agência {Agencia}, Conta {Numero}, Saldo Atual {Saldo}.";
+        }
     }
 }

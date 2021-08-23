@@ -15,7 +15,7 @@ namespace ByteBank.Model
         {
             Arquivo = arquivo;
             //throw new FileNotFoundException();
-            Console.WriteLine("Abrindo arquivo: " + arquivo);
+            Console.WriteLine($"Abrindo arquivo: {arquivo}");
         }
         public string LerProximaLinha()
         {

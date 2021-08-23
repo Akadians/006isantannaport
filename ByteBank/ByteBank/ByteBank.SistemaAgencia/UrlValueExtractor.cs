@@ -25,7 +25,20 @@ namespace ByteBank.SistemaAgencia
 
         public string GetValueParam(string paramName)
         {
-            return "";
+            paramName = paramName.ToUpper();
+            string argumentUpper = _argumentos.ToUpper();
+            string term = paramName + "=";
+            int termIndex = argumentUpper.IndexOf(term);
+
+            string resume = _argumentos.Substring(termIndex + term.Length);
+            int commercialEIndex = resume.IndexOf('&');
+
+            if( commercialEIndex == -1)
+            {
+                return resume;
+            }
+
+            return resume.Remove(commercialEIndex);
         }
     }
 }

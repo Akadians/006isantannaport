@@ -31,7 +31,7 @@ namespace ByteBank.Model
         /// </summary>
         /// <param name="saldo"> Informa o valor do <see cref="Saldo"/> atual da conta.</param>
         /// <param name="valorDoSaque">Informa o valor de <see cref="Valorsaque"/> requisitado na transação.</param>
-        public SaldoInsuficienteException(double saldo, double valorDoSaque) : this ("Tentativa de saque do valor de " + valorDoSaque + " em uma conta com saldo de " + saldo)
+        public SaldoInsuficienteException(double saldo, double valorDoSaque) : this ($"Tentativa de saque do valor de {valorDoSaque} em uma conta com saldo de {saldo}")
         {
             Saldo = saldo;
             Valorsaque = valorDoSaque;
