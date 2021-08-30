@@ -29,6 +29,19 @@
             Profissão exercida pelo cliente.
             </summary>
         </member>
+        <member name="M:ByteBank.Model.Cliente.Equals(System.Object)">
+            <summary>
+            Metodo de comparação das informações de cliente para identificaçao de duplicidades.
+            </summary>
+            <param name="obj"> Espe parametro deve conter o cliente alvo da comparação.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ByteBank.Model.Cliente.GetHashCode">
+            <summary>
+            Metodo não implementado.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ByteBank.Model.ContaCorrente">
             <summary>
             Classe que define o comportamento padrão de uma conta corrente no banco ByteBank.
@@ -103,6 +116,12 @@
             <exception cref="T:ByteBank.Model.SaldoInsuficienteException">Exceção lançada quando o valor de <paramref name="valor"/> é maior que o valor da propriedade <see cref="P:ByteBank.Model.ContaCorrente.Saldo"/>.</exception>
             <param name="valor">Representa o valor da transferencia, deve ser > 0 e menor que <see cref="P:ByteBank.Model.ContaCorrente.Saldo"/></param>
             <param name="contaDestino">Conta corrente destino para a transferencia de valores</param>
+        </member>
+        <member name="M:ByteBank.Model.ContaCorrente.ToString">
+            <summary>
+            Metodo de acesso a informações da classe.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:ByteBank.Model.Funcionarios.Auxiliar">
             <summary>
