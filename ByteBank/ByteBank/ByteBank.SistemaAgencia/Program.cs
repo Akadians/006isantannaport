@@ -9,7 +9,9 @@ namespace ByteBank.SistemaAgencia
         static void Main(string[] args)
 
         {
+            
             AccountList Contas = new AccountList();
+            
 
             Contas.Add(new ContaCorrente(001, 1001));
             Contas.Add(new ContaCorrente(001, 1002));
@@ -19,11 +21,15 @@ namespace ByteBank.SistemaAgencia
             Contas.Add(new ContaCorrente(001, 1006));
             Contas.Add(new ContaCorrente(001, 1007));
 
+            Console.WriteLine(Contas.Tamanho);
 
-            //for (int i = 0; i < Contas.Length; i++)
-            //{
-            //    Console.WriteLine($"Conta {i} {Contas[i].Numero}");
-            //}
+            for(int i = 0; i < Contas.Tamanho; i++)            
+            {
+                ContaCorrente itemAtual = Contas[i];               
+                
+                Console.WriteLine($"Item na posição {i}: Agencia {itemAtual.Agencia} / Conta {itemAtual.Numero}.");
+                Console.WriteLine($"Teste {i}");                
+            }
 
             Console.ReadLine();
         }
