@@ -1,11 +1,15 @@
-﻿using ByteBank.Model;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ByteBank.SistemaAgencia
 {
-    public class AccountList
+    public class GenericalList<T>
     {
-        private ContaCorrente[] _itens;        
+
+        private T[] _itens;
         private int _nextPosition;
 
         public int Tamanho
@@ -16,25 +20,25 @@ namespace ByteBank.SistemaAgencia
             }
         }
 
-        public AccountList(int _numeroDeContas = 1)
+        public GenericalList(int _numeroDeObjetos = 1)
         {
-            _itens = new ContaCorrente[_numeroDeContas];
+            _itens = new T[_numeroDeObjetos];
             _nextPosition = 0;
         }
-        public void Add(ContaCorrente item)
+        public void Add(T item)
 
         {
             CapCheck(_nextPosition + 1);
 
             _itens[_nextPosition] = item;
-            
+
             _nextPosition++;
             Console.WriteLine(_nextPosition);
         }
 
-        public void AddMultiple (params ContaCorrente[] itens)
+        public void AddMultiple(params T[] itens)
         {
-            foreach( ContaCorrente conta in itens)
+            foreach (T conta in itens)
             {
                 Add(conta);
             }
@@ -47,9 +51,9 @@ namespace ByteBank.SistemaAgencia
                 return;
             }
 
-            ContaCorrente[] newArray = new ContaCorrente[tamanhoNecessario];
+            T[] newArray = new T[tamanhoNecessario];
 
-            for(int i = 0; i < _itens.Length; i++)
+            for (int i = 0; i < _itens.Length; i++)
             {
                 newArray[i] = _itens[i];
             }
@@ -57,13 +61,13 @@ namespace ByteBank.SistemaAgencia
             _itens = newArray;
         }
 
-        public void Remove(ContaCorrente item)
+        public void Remove(T item)
         {
             int indiceItem = -1;
 
             for (int i = 0; i < _nextPosition - 1; i++)
             {
-                ContaCorrente itemAtual = _itens[i];
+                T itemAtual = _itens[i];
 
                 if (itemAtual.Equals(item))
                 {
@@ -78,10 +82,10 @@ namespace ByteBank.SistemaAgencia
             }
 
             _nextPosition--;
-            _itens[_nextPosition] = null;
+            //_itens[_nextPosition] = null;
         }
 
-        public ContaCorrente GetitemIndex(int indice)
+        public T GetitemIndex(int indice)
         {
             if (indice < 0 || indice >= _nextPosition)
             {
@@ -91,7 +95,7 @@ namespace ByteBank.SistemaAgencia
             return _itens[indice];
         }
 
-        public ContaCorrente this[int indice]
+        public T this[int indice]
         {
             get
             {
