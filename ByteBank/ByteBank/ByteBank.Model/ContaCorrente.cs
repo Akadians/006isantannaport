@@ -5,7 +5,7 @@ namespace ByteBank.Model
     /// <summary>
     /// Classe que define o comportamento padrão de uma conta corrente no banco ByteBank.
     /// </summary>
-    public class ContaCorrente
+    public class ContaCorrente : IComparable
     {
         /// <summary>
         /// Taxa padrão cobrada em cima de cada operação realizada na conta corrente.
@@ -141,7 +141,11 @@ namespace ByteBank.Model
         {
             return $" Agência {Agencia}, Conta {Numero}, Saldo Atual {Saldo}.";
         }
-
+        /// <summary>
+        /// Metodo de verificação de duplicidade em contas.
+        /// </summary>
+        /// <param name="obj">Insira conta para o metodo de comparação.</param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             ContaCorrente otherAccount = obj as ContaCorrente;
@@ -151,6 +155,25 @@ namespace ByteBank.Model
                 return false;
             }            
             return Numero == otherAccount.Numero && Agencia == otherAccount.Agencia;
+        }
+        /// <summary>
+        /// Metodo de Comparação para ordenar as contas.
+        /// </summary>
+        /// <param name="obj">Insira conta para o metodo de comparação.</param>
+        /// <returns></returns>
+        public int CompareTo(object obj)
+        {
+            var otherAccount = obj as ContaCorrente;
+            if( Numero < otherAccount.Numero || otherAccount == null)
+            {
+                return -1;
+            }
+            else if(Numero == otherAccount.Numero)
+            {
+                return 0;
+            }
+
+            return 1;
         }
     }
 }

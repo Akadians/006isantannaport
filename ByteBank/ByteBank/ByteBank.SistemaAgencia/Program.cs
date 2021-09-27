@@ -1,5 +1,7 @@
 ﻿using ByteBank.Model;
+using ByteBank.SistemaAgencia.Extensions;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace ByteBank.SistemaAgencia
@@ -9,26 +11,21 @@ namespace ByteBank.SistemaAgencia
         static void Main(string[] args)
 
         {
+            List<int> age = new ();
+            var parceiro = new ParceiroComercial();
             
-            AccountList Contas = new AccountList();
-            
 
-            Contas.Add(new ContaCorrente(001, 1001));
-            Contas.Add(new ContaCorrente(001, 1002));
-            Contas.Add(new ContaCorrente(001, 1003));
-            Contas.Add(new ContaCorrente(001, 1004));
-            Contas.Add(new ContaCorrente(001, 1005));
-            Contas.Add(new ContaCorrente(001, 1006));
-            Contas.Add(new ContaCorrente(001, 1007));
+            age.Add(11);
+            age.Add(25);
+            age.AddMore(17, 30, 28, 11);
+            age.AddMore(22, 17, 25);
+            age.Sort();
+            //age.Reverse();
+            age.AddMore(58,29,26);
 
-            Console.WriteLine(Contas.Tamanho);
-
-            for(int i = 0; i < Contas.Tamanho; i++)            
+            for(int i = 0; i < age.Count; i++)
             {
-                ContaCorrente itemAtual = Contas[i];               
-                
-                Console.WriteLine($"Item na posição {i}: Agencia {itemAtual.Agencia} / Conta {itemAtual.Numero}.");
-                Console.WriteLine($"Teste {i}");                
+                Console.WriteLine(age[i]);
             }
 
             Console.ReadLine();
@@ -48,7 +45,7 @@ namespace ByteBank.SistemaAgencia
         {
             //Buscador de expressões.
             string url = "http://www.bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar";
-            UrlValueExtractor valueExtractor = new UrlValueExtractor(url);
+            var valueExtractor = new UrlValueExtractor(url);
 
             string value = valueExtractor.GetValueParam("moedaDestino");
             Console.WriteLine("Valor de moedaDestino: " + value);
