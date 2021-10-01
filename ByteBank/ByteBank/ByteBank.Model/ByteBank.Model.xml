@@ -123,6 +123,20 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ByteBank.Model.ContaCorrente.Equals(System.Object)">
+            <summary>
+            Metodo de verificação de duplicidade em contas.
+            </summary>
+            <param name="obj">Insira conta para o metodo de comparação.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ByteBank.Model.ContaCorrente.CompareTo(System.Object)">
+            <summary>
+            Metodo de Comparação para ordenar as contas.
+            </summary>
+            <param name="obj">Insira conta para o metodo de comparação.</param>
+            <returns></returns>
+        </member>
         <member name="T:ByteBank.Model.Funcionarios.Auxiliar">
             <summary>
             Funcionário com cargo administrativo, Auxiliar Administrativo.
