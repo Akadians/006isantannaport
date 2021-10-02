@@ -10,8 +10,6 @@ namespace ByteBank.SistemaAgencia
 {
     partial class program
     {
-
-
         static void WriteBuffer(byte[] Buffer, int bytesReaded)
         {
             //var utf8 = new UTF8Encoding();
@@ -84,6 +82,47 @@ namespace ByteBank.SistemaAgencia
 
             string valueOrigin = valueExtractor.GetValueParam("moedaOrigem");
             Console.WriteLine("Valor de moedaOrigem: " + valueOrigin);
+        }
+
+        static void CSVReader ()
+        {
+            var urlFile = "contas.txt";
+            using (var fileFlow = new FileStream(urlFile, FileMode.Open))
+            using (var leitor = new StreamReader(fileFlow))
+            {
+
+                while (!leitor.EndOfStream)
+                {
+                    var line = leitor.ReadLine();
+                    var contaCorrente = GetString(line);
+                    var msg = $"{contaCorrente.titular.nome}: Account Number {contaCorrente.Numero} Agency {contaCorrente.Agencia} Saldo: {contaCorrente.Saldo}.";
+                    Console.WriteLine(msg);
+                    Console.ReadLine();
+                }
+            }
+        }
+
+        static ContaCorrente GetString(string line)
+        {
+            string[] campos = line.Split(',');
+
+            var agency = campos[0];
+            var num = campos[1];
+            var saldo = campos[2].Replace('.', ',');
+            var nomeTitular = campos[3];
+
+            var agencyNum = int.Parse(agency);
+            var numAccount = int.Parse(num);
+            var saldoAtual = double.Parse(saldo);
+
+            var titular = new Cliente();
+            titular.nome = nomeTitular;
+
+            var resume = new ContaCorrente(agencyNum, numAccount);
+            resume.Depositar(saldoAtual);
+            resume.titular = titular;
+
+            return resume;
         }
 
     }
